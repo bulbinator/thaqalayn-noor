@@ -1,14 +1,27 @@
-import Message from "../components/Message";
+import { use, useState } from "react";
+import Chain from "../components/Chain";
+import { getChain } from "../services/api";
+import HadithSearch from "../components/HadithSearch";
 
 function Home() {
-  let fruits = [
-    { id: 1, name: "apple", color: "red" },
-    { id: 2, name: "orange", color: "orange" },
-    { id: 3, name: "bannana", color: "yellow" },
-  ];
+  const [URL, setURL] = useState("");
+  const [chains, setChains] = useState([]);
+
+  const handleURLSubmit = async (submittedURL) => {
+    setURL(submittedURL);
+    setChains(await getChain(submittedURL));
+  };
+
   return (
     <>
-      {fruits.map((fruit) => (<Message fruit={fruit} key={fruit.id}></Message>))}
+      <HadithSearch onSubmit={handleURLSubmit}></HadithSearch>
+      {chains &&
+        chains.map((chain, index) => (
+          <>
+            <h3>Chain {index + 1}:</h3>
+            <Chain chain={chain} key={index}></Chain>
+          </>
+        ))}
     </>
   );
 }
