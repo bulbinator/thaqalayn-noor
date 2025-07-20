@@ -10,9 +10,9 @@ function Chain({ chain }) {
     <>
       {chain.map((item, index) =>
         item.is_narrator ? (
-          <Narrator narrator={item} key={index}></Narrator>
+          <Narrator narratorObject={item} key={index}></Narrator>
         ) : (
-          <span key={index}>{item.title + " "}</span>
+          <span key={index} className="non-narrator">{item.title + " "}</span>
         )
       )}
     </>

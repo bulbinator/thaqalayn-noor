@@ -1,15 +1,76 @@
-import { Tooltip, Button } from "@mantine/core";
+import { Tooltip, Button, Modal, Tabs } from "@mantine/core";
+import { useDisclosure } from "@mantine/hooks";
+import Biography from "./Biography";
+import Evaluation from "./Evaluation";
 
-function Narrator({ narrator }) {
-  let narrators = narrator.narrators; // thank you kulayni for idata min ashabina
-  const narratorStatus = narrators.map((narrator) => narrator.name).join("\n");
+function Narrator({ narratorObject }) {
+  const [opened, { open, close }] = useDisclosure(false); // modal
+
+  function getNarratorClassName(narratorSummary) {
+    if (narratorSummary.includes("معصوم")) {
+      return "masoom";
+    } else if (narratorSummary.includes("ثقة")) {
+      if (narratorSummary.includes("على التحقيق")) {
+        return "thiqa-thaqiq";
+      } else if (narratorSummary.includes("غير إمامي‌")) {
+        return "thiqa-ghayr-imami";
+      } else if (narratorSummary.includes("إمامي‌")) {
+        return "thiqa-imami";
+      }
+    } else {
+      return "";
+    }
+  }
+  let narratorSummary = "";
+  let narratorClassName = "";
+  let narrators = narratorObject.narrators; // thank you kulayni for idata min ashabina
+
+  if (narrators.length != 0) {
+    narrators.forEach((narrator) => {
+      let infoList = narrator.infoList2;
+      if (infoList && infoList.length > 1) {
+        narratorSummary +=
+          narrator.name.split(",")[0] + "," + infoList[1].text + "\n";
+      } else {
+        narratorSummary += narrator.name + "\n";
+      }
+      narratorClassName = getNarratorClassName(narratorSummary);
+    });
+  } else {
+    narratorSummary = narratorObject.title;
+    narratorClassName = "narrator";
+  }
 
   return (
     <>
-      <Tooltip
-        label={<div style={{ whiteSpace: "pre-line" }}>{narratorStatus}</div>}
+      <Modal
+        className="arabic-text"
+        opened={opened}
+        onClose={close}
+        title={<strong>{narratorObject.title}</strong>}
+        overlayProps={{
+          blur: 2,
+        }}
       >
-        <span>{narrator.title + " "}</span>
+        {narratorObject.narrators.map((narrator, index) => (
+          <Tabs variant="outline" defaultValue="bio" radius="md" key={index}>
+            {console.log(narrator)}
+            <Tabs.List grow justify="space-between">
+              <Tabs.Tab value="bio">Biography</Tabs.Tab>
+              <Tabs.Tab value="eval">Evaluation</Tabs.Tab>
+            </Tabs.List>
+
+            <Tabs.Panel value="bio"><Biography narrator={narrator}></Biography></Tabs.Panel>
+            <Tabs.Panel value="eval"><Evaluation narrator={narrator}></Evaluation></Tabs.Panel>
+          </Tabs>
+        ))}
+      </Modal>
+      <Tooltip
+        label={<div style={{ whiteSpace: "pre-line" }}>{narratorSummary}</div>}
+      >
+        <span className={"narrator " + narratorClassName} onClick={open}>
+          {narratorObject.title + " "}
+        </span>
       </Tooltip>
     </>
   );
