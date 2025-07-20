@@ -4,7 +4,7 @@ function Evaluation({ narrator }) {
   if (!narrator?.infoList2)
     return (
       <>
-      <strong>{narrator.name.split(",")[0]}:</strong>
+      {narrator.name.split(",")[0]}:
         <Alert className="english-text"
           variant="transparent"
           color="red"
@@ -28,21 +28,21 @@ function Evaluation({ narrator }) {
 
   return (
     <div>
-      <strong>{narrator.name.split(",")[0]}:</strong>
+      {narrator.name.split(",")[0]}:
       {narrator.infoList2.map((item, index) => {
         const label = getEvalLabel(item.title);
         if (label === "remove") return null;
 
         return (
           <div key={index}>
-            <strong className="english-text">{label}:</strong>
+            <div className="english-text">{label}:</div>
             {typeof item.text === "string" ? (
               <div>{item.text}</div>
             ) : (
               <ul>
                 {item.text.map((entry, i) => (
                   <li key={i}>
-                    {<strong>{entry.text + ": "}</strong>}
+                    {entry.text + ": "}
                     {entry.bookName?.length > 0 && (
                       <span className="sources">
                         {" ("}

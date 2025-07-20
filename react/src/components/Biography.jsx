@@ -4,7 +4,7 @@ function Biography({ narrator }) {
   if (!narrator?.infoList)
     return (
       <>
-      <strong>{narrator.name.split(",")[0]}:</strong>
+      {narrator.name.split(",")[0]}:
         <Alert className="english-text"
           variant="transparent"
           color="red"
@@ -31,14 +31,14 @@ function Biography({ narrator }) {
 
   return (
     <div>
-      <strong>{narrator.name.split(",")[0]}:</strong>
+      {narrator.name.split(",")[0]}:
       {narrator.infoList.map((item, index) => (
         <div key={index}>
-          <strong className="english-text">{getBioLabel(item.title)}:</strong>
+          <div className="english-text">{getBioLabel(item.title)}:</div>
           <ul>
             {item.text.map((entry, i) => (
               <li key={i}>
-                {<strong>{entry.text + ": "}</strong>}
+                {entry.text + ": "}
                 {entry?.bookName?.length > 0 && (
                   <span className="sources">
                     {" ("}

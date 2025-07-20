@@ -1,16 +1,16 @@
-import { Tooltip, Button, Modal, Tabs } from "@mantine/core";
+import { Tooltip, Button, Modal, Tabs, Paper } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import Biography from "./Biography";
 import Evaluation from "./Evaluation";
 import { IoPerson } from "react-icons/io5";
-import { FaBalanceScale, FaGavel  } from "react-icons/fa";
+import { FaBalanceScale, FaGavel } from "react-icons/fa";
 
 function Narrator({ narratorObject }) {
   const [opened, { open, close }] = useDisclosure(false); // modal
 
   function getNarratorClassName(narratorSummary) {
     if (narratorSummary.includes("معصوم")) {
-      return "masoom";
+      return "thiqa-imami";
     } else if (narratorSummary.includes("ثقة")) {
       if (narratorSummary.includes("على التحقيق")) {
         return "thiqa-thaqiq";
@@ -50,7 +50,7 @@ function Narrator({ narratorObject }) {
         opened={opened}
         onClose={close}
         size="auto"
-        title={<strong>{narratorObject.title}</strong>}
+        title={<div style={{ fontSize: "2rem" }}>{narratorObject.title}</div>}
         overlayProps={{
           blur: 2,
         }}
@@ -59,10 +59,18 @@ function Narrator({ narratorObject }) {
           <Tabs variant="outline" defaultValue="bio" radius="md" key={index}>
             {console.log(narrator)}
             <Tabs.List grow justify="space-between">
-              <Tabs.Tab value="bio" leftSection={<IoPerson />}>
+              <Tabs.Tab
+                style={{ fontSize: "1.1rem" }}
+                value="bio"
+                leftSection={<IoPerson />}
+              >
                 Biography
               </Tabs.Tab>
-              <Tabs.Tab value="eval" leftSection={<FaBalanceScale />}>
+              <Tabs.Tab
+                style={{ fontSize: "1.1rem" }}
+                value="eval"
+                leftSection={<FaBalanceScale />}
+              >
                 Evaluation
               </Tabs.Tab>
             </Tabs.List>

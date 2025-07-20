@@ -1,10 +1,9 @@
 @font-face {
-  font-family: 'NassimArabic';
-  src: url('./assets/fonts/nassim-arabic-pro.otf') format('opentype');
+  font-family: "NassimArabic";
+  src: url("./assets/fonts/nassim-arabic-pro.otf") format("opentype");
   font-weight: normal;
   font-style: normal;
 }
-
 
 .narrator {
   color: black;
@@ -16,20 +15,16 @@
   color: #1a73e8; /* a nice blue */
 }
 
-.thiqa-thaqiq {
-  color: #fffaa0;
-}
-
 .thiqa-ghayr-imami {
-  color: #77dd77;
+  color: #12af12;
 }
 
 .thiqa-imami {
-  color: #8fbc8f;
+  color: #048542;
 }
 
-.masoom {
-  color: gold;
+.thiqa-thaqiq {
+  color: rgb(196, 167, 5);
 }
 
 .non-narrator {
@@ -39,7 +34,7 @@
 .arabic-text {
   direction: rtl;
   text-align: right;
-  font-family: 'NassimArabic', sans-serif;
+  font-family: "NassimArabic", sans-serif;
   font-size: 1.5rem;
 }
 
@@ -47,6 +42,8 @@
   display: block;
   text-align: left;
   direction: ltr;
+  font-family: "NassimArabic", sans-serif;
+  font-size: 1.5rem;
 }
 
 .sources {
