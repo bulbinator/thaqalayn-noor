@@ -7,7 +7,7 @@ function Chain({ chain }) {
   const [opened, { open, close }] = useDisclosure(false);
 
   return (
-    <>
+    <div className="arabic-text">
       {chain.map((item, index) =>
         item.is_narrator ? (
           <Narrator narratorObject={item} key={index}></Narrator>
@@ -15,7 +15,7 @@ function Chain({ chain }) {
           <span key={index} className="non-narrator">{item.title + " "}</span>
         )
       )}
-    </>
+    </div>
   );
 }
 

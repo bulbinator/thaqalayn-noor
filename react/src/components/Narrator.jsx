@@ -2,6 +2,8 @@ import { Tooltip, Button, Modal, Tabs } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import Biography from "./Biography";
 import Evaluation from "./Evaluation";
+import { IoPerson } from "react-icons/io5";
+import { FaBalanceScale, FaGavel  } from "react-icons/fa";
 
 function Narrator({ narratorObject }) {
   const [opened, { open, close }] = useDisclosure(false); // modal
@@ -47,6 +49,7 @@ function Narrator({ narratorObject }) {
         className="arabic-text"
         opened={opened}
         onClose={close}
+        size="auto"
         title={<strong>{narratorObject.title}</strong>}
         overlayProps={{
           blur: 2,
@@ -56,12 +59,20 @@ function Narrator({ narratorObject }) {
           <Tabs variant="outline" defaultValue="bio" radius="md" key={index}>
             {console.log(narrator)}
             <Tabs.List grow justify="space-between">
-              <Tabs.Tab value="bio">Biography</Tabs.Tab>
-              <Tabs.Tab value="eval">Evaluation</Tabs.Tab>
+              <Tabs.Tab value="bio" leftSection={<IoPerson />}>
+                Biography
+              </Tabs.Tab>
+              <Tabs.Tab value="eval" leftSection={<FaBalanceScale />}>
+                Evaluation
+              </Tabs.Tab>
             </Tabs.List>
 
-            <Tabs.Panel value="bio"><Biography narrator={narrator}></Biography></Tabs.Panel>
-            <Tabs.Panel value="eval"><Evaluation narrator={narrator}></Evaluation></Tabs.Panel>
+            <Tabs.Panel value="bio">
+              <Biography narrator={narrator}></Biography>
+            </Tabs.Panel>
+            <Tabs.Panel value="eval">
+              <Evaluation narrator={narrator}></Evaluation>
+            </Tabs.Panel>
           </Tabs>
         ))}
       </Modal>

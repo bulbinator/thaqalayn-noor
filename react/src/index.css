@@ -1,3 +1,11 @@
+@font-face {
+  font-family: 'NassimArabic';
+  src: url('./assets/fonts/nassim-arabic-pro.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
 .narrator {
   color: black;
   cursor: pointer;
@@ -25,10 +33,22 @@
 }
 
 .non-narrator {
-  color: gray;
+  color: #888;
 }
 
 .arabic-text {
   direction: rtl;
   text-align: right;
+  font-family: 'NassimArabic', sans-serif;
+  font-size: 1.5rem;
+}
+
+.english-text {
+  display: block;
+  text-align: left;
+  direction: ltr;
+}
+
+.sources {
+  color: #888;
 }
