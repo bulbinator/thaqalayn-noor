@@ -11,7 +11,6 @@ function Evaluation({ narrator }) {
           radius="md"
           title="No data to display for this narrator"
         ></Alert>
-        <Divider my="md"></Divider>
       </>
     );
 
@@ -59,7 +58,6 @@ function Evaluation({ narrator }) {
           </div>
         );
       })}
-      <Divider my="md"></Divider>
     </div>
   );
 }

@@ -56,32 +56,33 @@ function Narrator({ narratorObject }) {
         }}
       >
         {narratorObject.narrators.map((narrator, index) => (
-          <Tabs variant="outline" defaultValue="bio" radius="md" key={index}>
-            {console.log(narrator)}
-            <Tabs.List grow justify="space-between">
-              <Tabs.Tab
-                style={{ fontSize: "1.1rem" }}
-                value="bio"
-                leftSection={<IoPerson />}
-              >
-                Biography
-              </Tabs.Tab>
-              <Tabs.Tab
-                style={{ fontSize: "1.1rem" }}
-                value="eval"
-                leftSection={<FaBalanceScale />}
-              >
-                Evaluation
-              </Tabs.Tab>
-            </Tabs.List>
+          <Paper shadow="xl" radius="xl" withBorder p="xl">
+            <Tabs variant="outline" defaultValue="bio" radius="md" key={index}>
+              <Tabs.List grow justify="space-between">
+                <Tabs.Tab
+                  style={{ fontSize: "1.1rem" }}
+                  value="bio"
+                  leftSection={<IoPerson />}
+                >
+                  Biography
+                </Tabs.Tab>
+                <Tabs.Tab
+                  style={{ fontSize: "1.1rem" }}
+                  value="eval"
+                  leftSection={<FaBalanceScale />}
+                >
+                  Evaluation
+                </Tabs.Tab>
+              </Tabs.List>
 
-            <Tabs.Panel value="bio">
-              <Biography narrator={narrator}></Biography>
-            </Tabs.Panel>
-            <Tabs.Panel value="eval">
-              <Evaluation narrator={narrator}></Evaluation>
-            </Tabs.Panel>
-          </Tabs>
+              <Tabs.Panel value="bio">
+                <Biography narrator={narrator}></Biography>
+              </Tabs.Panel>
+              <Tabs.Panel value="eval">
+                <Evaluation narrator={narrator}></Evaluation>
+              </Tabs.Panel>
+            </Tabs>
+          </Paper>
         ))}
       </Modal>
       <Tooltip
