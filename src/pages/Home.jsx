@@ -60,7 +60,7 @@ function Home() {
           <Group justify="flex-end" mb="md">
             <ActionIcon
               component="a"
-              href="https://github.com/bulbinator"
+              href="https://github.com/bulbinator/thaqalayn-noor"
               target="_blank"
               rel="noopener noreferrer"
               variant="default"
