@@ -34,12 +34,13 @@ function HadithSearch({ onSubmit, error }) {
           className="search"
         />
         <Button
-          variant="light"
+          variant="outline"
           color="teal"
           size="md"
           radius="md"
           type="submit"
           className="btn"
+          disabled={URL.trim() === ""}
           leftSection={<FaSearch />}
         >
           Search
