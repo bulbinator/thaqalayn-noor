@@ -19,6 +19,8 @@ function Narrator({ narratorObject }) {
       } else if (narratorSummary.includes("إمامي‌")) {
         return "thiqa-imami";
       }
+    } else if (narratorSummary.includes("ضعيف")) {
+      return "daef";
     } else {
       return "";
     }
@@ -56,8 +58,8 @@ function Narrator({ narratorObject }) {
         }}
       >
         {narratorObject.narrators.map((narrator, index) => (
-          <Paper shadow="xl" radius="xl" withBorder p="xl">
-            <Tabs variant="outline" defaultValue="bio" radius="md" key={index}>
+          <Paper shadow="xl" radius="xl" withBorder p="xl" key={index}>
+            <Tabs variant="outline" defaultValue="bio" radius="md">
               <Tabs.List grow justify="space-between">
                 <Tabs.Tab
                   style={{ fontSize: "1.1rem" }}

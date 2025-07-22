@@ -29,19 +29,24 @@ function Home() {
         visible={loading}
         overlayProps={{ blur: 2 }}
       ></LoadingOverlay>
-      <Paper shadow="xl" radius="xl" withBorder p="xl">
-        <HadithSearch onSubmit={handleURLSubmit}></HadithSearch>
-      </Paper>
-      <Paper shadow="xl" radius="xl" withBorder p="xl">
-        {chains &&
-          chains.map((chain, index) => (
-            <div key={index}>
-              <h3>Chain {index + 1}:</h3>
-              <Chain chain={chain}></Chain>
-              <Divider my="md"></Divider>
-            </div>
-          ))}
-      </Paper>
+      <div className="content-container">
+        <div className="search">
+          <Paper shadow="xl" radius="xl" withBorder p="xl">
+            <HadithSearch onSubmit={handleURLSubmit}></HadithSearch>
+          </Paper>
+        </div>
+        <div className="chains">
+          {chains &&
+            chains.map((chain, index) => (
+              <div key={index}>
+                <Paper shadow="xl" radius="xl" withBorder p="xl">
+                  <div className="english-text" style={{ fontSize: "1.7rem" }}>Chain {index + 1}:</div>
+                  <Chain chain={chain}></Chain>
+                </Paper>
+              </div>
+            ))}
+        </div>
+      </div>
     </>
   );
 }
