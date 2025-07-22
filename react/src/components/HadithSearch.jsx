@@ -1,10 +1,11 @@
 import { useState } from "react";
-import { getChain } from "../services/api";
-import { TextInput, Button, Image } from "@mantine/core";
+import { TextInput, Button } from "@mantine/core";
 import { FaSearch } from "react-icons/fa";
 
-function HadithSearch({ onSubmit }) {
+function HadithSearch({ onSubmit, error }) {
   const [URL, setURL] = useState("");
+  const [errorText, setErrorText] = useState("");
+
   const handleURLSubmit = (e) => {
     e.preventDefault();
     onSubmit(URL);
@@ -13,9 +14,12 @@ function HadithSearch({ onSubmit }) {
   const handleURLChange = (e) => {
     setURL(e.target.value);
   };
+
   return (
     <div className="search-container-contents">
-      <h1 style={{ fontFamily: "NassimArabic", fontSize: "2.5rem" }}>Thaqalayn x Noor</h1>
+      <h1 style={{ fontFamily: "NassimArabic", fontSize: "2.5rem" }}>
+        Thaqalayn x Noor
+      </h1>
       <form onSubmit={handleURLSubmit} className="search-form">
         <TextInput
           size="md"
@@ -26,8 +30,9 @@ function HadithSearch({ onSubmit }) {
           placeholder="https://thaqalayn.net/hadith/x/x/x/x"
           value={URL}
           onChange={handleURLChange}
+          error={error}
           className="search"
-        ></TextInput>
+        />
         <Button
           variant="light"
           color="teal"
