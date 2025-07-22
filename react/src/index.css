@@ -72,20 +72,41 @@ body {
   flex-direction: column;
 }
 
-.search {
+.search-container {
   flex: 4;
   display: flex;
   justify-content: center;
   flex-direction: column;
   padding: 0 34rem 0 34rem;
-  border: 5px solid black;
 }
 
-.chains {
+.chains-container {
   flex: 6;
   display: flex;
   flex-direction: column;
   justify-content: center;
   padding: 0 15rem 2rem 15rem;
   gap: 1rem;
+}
+
+.search-container-contents {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-form {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 1rem;
+}
+
+.search {
+  flex: 7;
+}
+
+.btn {
+  flex: 3;
 }

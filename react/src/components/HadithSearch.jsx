@@ -1,29 +1,46 @@
 import { useState } from "react";
 import { getChain } from "../services/api";
+import { TextInput, Button, Image } from "@mantine/core";
+import { FaSearch } from "react-icons/fa";
 
-function HadithSearch({onSubmit}) {
+function HadithSearch({ onSubmit }) {
   const [URL, setURL] = useState("");
   const handleURLSubmit = (e) => {
     e.preventDefault();
-    onSubmit(URL)
+    onSubmit(URL);
   };
 
   const handleURLChange = (e) => {
     setURL(e.target.value);
   };
   return (
-    <>
-      <h1>Hellow</h1>
-      <form onSubmit={handleURLSubmit}>
-        <input
-          type="text"
-          placeholder="Thaqalayn URL"
+    <div className="search-container-contents">
+      <h1 style={{ fontFamily: "NassimArabic", fontSize: "2.5rem" }}>Thaqalayn x Noor</h1>
+      <form onSubmit={handleURLSubmit} className="search-form">
+        <TextInput
+          size="md"
+          variant="filled"
+          radius="lg"
+          label="Hadith Search"
+          description="Enter a thaqalayn.net URL"
+          placeholder="https://thaqalayn.net/hadith/x/x/x/x"
           value={URL}
           onChange={handleURLChange}
-        ></input>
-        <button type="submit">Submit</button>
+          className="search"
+        ></TextInput>
+        <Button
+          variant="light"
+          color="teal"
+          size="md"
+          radius="md"
+          type="submit"
+          className="btn"
+          leftSection={<FaSearch />}
+        >
+          Search
+        </Button>
       </form>
-    </>
+    </div>
   );
 }
 

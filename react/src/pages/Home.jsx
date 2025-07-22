@@ -30,17 +30,17 @@ function Home() {
         overlayProps={{ blur: 2 }}
       ></LoadingOverlay>
       <div className="content-container">
-        <div className="search">
+        <div className="search-container">
           <Paper shadow="xl" radius="xl" withBorder p="xl">
             <HadithSearch onSubmit={handleURLSubmit}></HadithSearch>
           </Paper>
         </div>
-        <div className="chains">
+        <div className="chains-container">
           {chains &&
             chains.map((chain, index) => (
               <div key={index}>
                 <Paper shadow="xl" radius="xl" withBorder p="xl">
-                  <div className="english-text" style={{ fontSize: "1.7rem" }}>Chain {index + 1}:</div>
+                  <div className="english-text" style={{ fontSize: "1.8rem" }}>Chain {index + 1}:</div>
                   <Chain chain={chain}></Chain>
                 </Paper>
               </div>
