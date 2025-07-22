@@ -16,7 +16,7 @@ function Narrator({ narratorObject }) {
         return "thiqa-thaqiq";
       } else if (narratorSummary.includes("غير إمامي‌")) {
         return "thiqa-ghayr-imami";
-      } else if (narratorSummary.includes("إمامي‌")) {
+      } else {
         return "thiqa-imami";
       }
     } else if (narratorSummary.includes("ضعيف")) {

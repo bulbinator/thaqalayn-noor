@@ -16,15 +16,27 @@ function Home() {
     setURL(submittedURL);
 
     try {
+      if (!submittedURL.startsWith("https://thaqalayn.net/hadith")) {
+        throw new Error("URL must start with https://thaqalayn.net/hadith");
+      }
+
+      const book = submittedURL.replace("https://thaqalayn.net/hadith/", "").split("/");
+      if (book.length > 1) {
+        const bookId = book[0];
+        const unsupportedBooks = ["34", "17", "33", "9"];
+        if (unsupportedBooks.includes(bookId)) {
+          throw new Error("The following books are not currently supported: Man Lā Yaḥḍuruh al-Faqīh, Muʿjam al-Aḥādīth al-Muʿtabara, Risālat al-Ḥuqūq, and Kitāb al-Ḍuʿafāʾ.");
+        }
+      }
+
       const fetchedChains = await getChain(submittedURL);
       if (!fetchedChains || fetchedChains.length === 0) {
-        throw new Error("No chains found");
+        throw new Error("No chains found for the provided URL.");
       }
       setChains(fetchedChains);
     } catch (error) {
-      console.error("Error fetching chain:", error);
       setChains([]);
-      setError("No results found for the provided URL.");
+      setError(error.message);
     } finally {
       setLoading(false);
     }

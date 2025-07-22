@@ -5,7 +5,6 @@
   font-style: normal;
 }
 
-/* --- Text Styling --- */
 .narrator {
   color: black;
   cursor: pointer;
@@ -56,7 +55,6 @@
   color: #888;
 }
 
-/* --- Layout --- */
 html,
 body {
   height: 100%;
@@ -96,7 +94,6 @@ body {
   gap: 1rem;
 }
 
-/* --- Forms --- */
 .search-container-contents {
   display: flex;
   flex-direction: column;
@@ -119,7 +116,6 @@ body {
   flex: 3;
 }
 
-/* --- Responsive Styling --- */
 @media (max-width: 768px) {
   .search-container,
   .chains-container {
